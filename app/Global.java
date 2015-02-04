@@ -37,7 +37,7 @@ public class Global extends GlobalSettings {
     }
 
     private void populateDB() throws Exception {
-        String file = Play.application().getFile("/app/seriesFinalFile.csv").getAbsolutePath();
+        String file = Play.application().getFile("/conf/seriesFinalFile.csv").getAbsolutePath();
         BufferedReader br;
         String line = "";
         Logger.info("Populing DB");
