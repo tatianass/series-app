@@ -36,6 +36,7 @@ public class Global extends GlobalSettings {
         });
     }
 
+   //adding episode, seasons and series
     private void populateDB() throws Exception {
         String file = Play.application().getFile("/conf/seriesFinalFile.csv").getAbsolutePath();
         BufferedReader br;
