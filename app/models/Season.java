@@ -22,7 +22,7 @@ public class Season {
     @JoinColumn
     private List<Episode> episodes;
     @Column
-    private final int PRIMO_HASHCODE = 31;
+    private final int PRIMOHASHCODE = 31;
 
     public enum Status {
         FULL,
@@ -124,8 +124,8 @@ public class Season {
     @Override
     public int hashCode() {
         int result = number;
-        result = PRIMO_HASHCODE * result + series.hashCode();
-        result = PRIMO_HASHCODE * result + episodes.hashCode();
+        result = PRIMOHASHCODE * result + series.hashCode();
+        result = PRIMOHASHCODE * result + episodes.hashCode();
         return result;
     }
 }

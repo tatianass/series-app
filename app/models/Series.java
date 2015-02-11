@@ -22,7 +22,7 @@ public class Series {
     @Column
     private boolean watched;
     @Column
-    private final int PRIMO_HASHCODE = 31;
+    private final int PRIMOHASHCODE = 31;
 
     public Series() {
         seasons = new ArrayList<>();
@@ -93,8 +93,8 @@ public class Series {
     @Override
     public int hashCode() {
         int result = name.hashCode();
-        result = PRIMO_HASHCODE * result + seasons.hashCode();
-        result = PRIMO_HASHCODE * result + (watched ? 1 : 0);
+        result = PRIMOHASHCODE * result + seasons.hashCode();
+        result = PRIMOHASHCODE * result + (watched ? 1 : 0);
         return result;
     }
 }
