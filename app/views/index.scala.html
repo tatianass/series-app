@@ -101,20 +101,20 @@
                             <div class="collapse" id="series@series.getId">
                             @for(season <- series.getSeasons){
                                 <a class="list-group-item">
-                                    @if(season.getStatus == Season.Status.full){
+                                    @if(season.getStatus == Season.Status.FULL){
                                         <span class="label label-success pull-right">Completa</span>
                                     }
-                                    @if(season.getStatus == Season.Status.incomplete){
+                                    @if(season.getStatus == Season.Status.INCOMPLETE){
                                         <span class="label label-warning pull-right">Incompleta</span>
                                     }
-                                    @if(season.getStatus == Season.Status.none){
+                                    @if(season.getStatus == Season.Status.NONE){
                                         <span class="label label-danger pull-right">Não Assitida</span>
                                     }
                                     <h5 data-toggle="collapse" data-target="#season@season.getId">
                                         @(season.getNumber)ª Temporada
                                     </h5>
                                 </a>
-                                @if(season.getStatus == Season.Status.incomplete){
+                                @if(season.getStatus == Season.Status.INCOMPLETE){
                                     <a class="list-group-item list-group-item-warning">
                                         Próximo Episódio: @season.nextEpisode().getNumber - @season.nextEpisode().getName
                                     </a>

@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +21,13 @@ public class Season {
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn
     private List<Episode> episodes;
+    @Column
+    private final int PRIMO_HASHCODE = 31;
 
     public enum Status {
-        full,
-        incomplete,
-        none
+        FULL,
+        INCOMPLETE,
+        NONE
     }
 
     public Season() {
@@ -77,11 +80,11 @@ public class Season {
             }
         }
         if (cont == 0) {
-            return Status.none;
+            return Status.NONE;
         } else if (cont == episodes.size()) {
-            return Status.full;
+            return Status.FULL;
         } else {
-            return Status.incomplete;
+            return Status.INCOMPLETE;
         }
     }
 
@@ -96,14 +99,24 @@ public class Season {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+        	return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+        	return false;
+        }
 
         Season season = (Season) o;
 
-        if (number != season.number) return false;
-        if (!episodes.equals(season.episodes)) return false;
-        if (!series.equals(season.series)) return false;
+        if (number != season.number) {
+        	return false;
+        }
+        if (!episodes.equals(season.episodes)) {
+        	return false;
+        }
+        if (!series.equals(season.series)) {
+        	return false;
+        }
 
         return true;
     }
@@ -111,8 +124,8 @@ public class Season {
     @Override
     public int hashCode() {
         int result = number;
-        result = 31 * result + series.hashCode();
-        result = 31 * result + episodes.hashCode();
+        result = PRIMO_HASHCODE * result + series.hashCode();
+        result = PRIMO_HASHCODE * result + episodes.hashCode();
         return result;
     }
 }

@@ -19,6 +19,8 @@ public class Episode {
     private String name;
     @Column
     private boolean watched;
+    @Column
+    private final int PRIMO_HASHCODE = 31;
 
     public Episode() {
         this.watched = false;
@@ -74,10 +76,18 @@ public class Episode {
 
         Episode episode = (Episode) o;
 
-        if (number != episode.number) return false;
-        if (watched != episode.watched) return false;
-        if (!name.equals(episode.name)) return false;
-        if (!season.equals(episode.season)) return false;
+        if (number != episode.number) {
+        	return false;
+        }
+        if (watched != episode.watched) {
+        	return false;
+        }
+        if (!name.equals(episode.name)) {
+        	return false;
+        }
+        if (!season.equals(episode.season)) {
+        	return false;
+        }
 
         return true;
     }
@@ -85,9 +95,9 @@ public class Episode {
     @Override
     public int hashCode() {
         int result = season.hashCode();
-        result = 31 * result + number;
-        result = 31 * result + name.hashCode();
-        result = 31 * result + (watched ? 1 : 0);
+        result = PRIMO_HASHCODE * result + number;
+        result = PRIMO_HASHCODE * result + name.hashCode();
+        result = PRIMO_HASHCODE * result + (watched ? 1 : 0);
         return result;
     }
 }

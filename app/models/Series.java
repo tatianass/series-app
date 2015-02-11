@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class Series {
     private List<Season> seasons;
     @Column
     private boolean watched;
+    @Column
+    private final int PRIMO_HASHCODE = 31;
 
     public Series() {
         seasons = new ArrayList<>();
@@ -65,14 +68,24 @@ public class Series {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+        	return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+        	return false;
+        }
 
         Series series = (Series) o;
 
-        if (watched != series.watched) return false;
-        if (!name.equals(series.name)) return false;
-        if (!seasons.equals(series.seasons)) return false;
+        if (watched != series.watched) {
+        	return false;
+        }
+        if (!name.equals(series.name)) {
+        	return false;
+        }
+        if (!seasons.equals(series.seasons)) {
+        	return false;
+        }
 
         return true;
     }
@@ -80,8 +93,8 @@ public class Series {
     @Override
     public int hashCode() {
         int result = name.hashCode();
-        result = 31 * result + seasons.hashCode();
-        result = 31 * result + (watched ? 1 : 0);
+        result = PRIMO_HASHCODE * result + seasons.hashCode();
+        result = PRIMO_HASHCODE * result + (watched ? 1 : 0);
         return result;
     }
 }
