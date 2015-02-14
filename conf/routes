@@ -6,7 +6,8 @@
 GET         /                        controllers.Application.index()
 GET         /series                  controllers.Application.series()
 POST        /series/watch/:id        controllers.Application.watchSeries(id: Long)
-POST        /episode/watch/:id       controllers.Application.watchEpisode(id: Long)
+POST        /episode/watch/:idEpisode   controllers.Application.watchEpisode(idEpisode: Long)
+POST 		/episode/next/:idSeason		controllers.Application.chageNextEpisode(idSeason: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file            controllers.Assets.at(path="/public", file)
