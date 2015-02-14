@@ -23,8 +23,6 @@ public class Series {
     private boolean watched;
     @Column
     private final int PRIMOHASHCODE = 31;
-    @Column
-	private int nextEpisodeMode;
 
     public Series() {
         seasons = new ArrayList<>();
@@ -91,14 +89,6 @@ public class Series {
 
         return true;
     }
-
-    public int getNextEpisodeMode() {
-		return nextEpisodeMode;
-	}
-
-	public void setNextEpisodeMode(int nextEpisodeMode) {
-		this.nextEpisodeMode = nextEpisodeMode;
-	}
 
 	@Override
     public int hashCode() {

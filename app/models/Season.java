@@ -107,7 +107,7 @@ public class Season {
 		return null;
 	}
 	
-	public Episode nextByThree() {
+	private Episode nextByThree() {
 		Episode ep = new Episode(0, "Três episódios foram assistidos fora de ordem", new Season());
 		for (int i=0; i< episodes.size(); i++) {
 			if (!episodes.get(i).isWatched()) {
@@ -135,7 +135,7 @@ public class Season {
 		return count < 3;
 	}
 
-	public Episode nextByEpisode() {
+	private Episode nextByEpisode() {
 		for (int i = episodes.size() - 1; i > -1; i--) {
 			if (episodes.get(i).isWatched()) {
 				if(getStatus() == Status.INCOMPLETE){ //case episode is the last watched
@@ -146,7 +146,7 @@ public class Season {
 		return null;
 	}
 
-	public Episode nextByLastWatched() {
+	private Episode nextByLastWatched() {
 		for (Episode episode : episodes) {
 			if (!episode.isWatched()) {
 				return episode;
